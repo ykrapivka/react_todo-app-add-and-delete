@@ -1,8 +1,7 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Todo } from '../types/Todo';
 import { TodoItem } from './TodoItem';
-import { TempTodo } from './TempTodo';
+import { TempTodo } from './tempTodo';
 
 type Props = {
   todos: Todo[];

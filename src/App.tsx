@@ -3,11 +3,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { UserWarning } from './UserWarning';
 import { deleteTodo, getTodos, postTodos, USER_ID } from './api/todos';
-import { TodoList } from './Components/TodoList';
 import { Todo } from './types/Todo';
 import { Footer } from './Components/Footer';
 import { updateTodos } from './api/todos';
 import classNames from 'classnames';
+import { TodoList } from './Components/todoList';
 
 export enum Filter {
   ALL = 'All',
