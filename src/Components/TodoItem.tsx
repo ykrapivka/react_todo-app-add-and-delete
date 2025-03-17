@@ -27,6 +27,13 @@ export const TodoItem: React.FC<Props> = ({
     setLoader(false);
   }
 
+  async function toggle() {
+    setLoader(true);
+    await markCompleted(todo);
+    setLoader(false);
+  }
+
+
   function handlgeInputClick() {
     setEditing(true);
     setTimeout(() => {
@@ -65,6 +72,24 @@ export const TodoItem: React.FC<Props> = ({
     }
   }
 
+  function HandleKeyPressed(e) {
+    if (e.key === 'Enter') {
+      handleTitleChange(e);
+    }
+
+    if (e.key === 'Escape') {
+      setEditing(false);
+    }
+  }
+
+  function handleBlur(e) {
+    if (e.target.value === todo.title) {
+      setEditing(false);
+    } else {
+      handleTitleChange(e);
+    }
+  }
+
   return (
     <div
       data-cy="Todo"
@@ -78,11 +103,7 @@ export const TodoItem: React.FC<Props> = ({
           type="checkbox"
           className="todo__status"
           checked={todo.completed}
-          onClick={async () => {
-            setLoader(true);
-            await markCompleted(todo);
-            setLoader(false);
-          }}
+          onClick={toggle}
         />
       </label>
 
@@ -94,31 +115,14 @@ export const TodoItem: React.FC<Props> = ({
           value={newTitle}
           className="todo__title--edit"
           onChange={e => setNewTitle(e.target.value)}
-          onBlur={e => {
-            if (e.target.value === todo.title) {
-              setEditing(false);
-            } else {
-              handleTitleChange(e);
-            }
-
-          }}
-          onKeyDown={e => {
-            if (e.key === 'Enter') {
-              handleTitleChange(e);
-            }
-
-            if (e.key === 'Escape') {
-              setEditing(false);
-            }
-          }}
+          onBlur={e => handleBlur(e)}
+          onKeyDown={e => HandleKeyPressed(e)}
         />
       ) : (
         <span
           data-cy="TodoTitle"
           className="todo__title"
-          onDoubleClick={() => {
-            handlgeInputClick();
-          }}
+          onDoubleClick={handlgeInputClick}
         >
           {todo.title}
         </span>
