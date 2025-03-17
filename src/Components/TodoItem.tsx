@@ -72,7 +72,7 @@ export const TodoItem: React.FC<Props> = ({
     }
   }
 
-  function HandleKeyPressed(e) {
+  function HandleKeyPressed(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter') {
       handleTitleChange(e);
     }
@@ -83,7 +83,7 @@ export const TodoItem: React.FC<Props> = ({
     }
   }
 
-  function handleBlur(e) {
+  function handleBlur(e: React.FocusEvent<HTMLInputElement, Element>) {
     if (e.target.value === todo.title) {
       setEditing(false);
     } else {
