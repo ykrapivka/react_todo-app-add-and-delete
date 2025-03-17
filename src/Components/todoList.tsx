@@ -1,7 +1,7 @@
 import React from 'react';
 import { Todo } from '../types/Todo';
 import { TodoItem } from './TodoItem';
-import { TempTodo } from './tempTodo';
+import { TempTodo } from './TempTodo';
 
 type Props = {
   todos: Todo[];

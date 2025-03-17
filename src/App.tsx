@@ -7,7 +7,7 @@ import { Todo } from './types/Todo';
 import { Footer } from './Components/Footer';
 import { updateTodos } from './api/todos';
 import classNames from 'classnames';
-import { TodoList } from './Components/todoList';
+import { TodoList } from './Components/TodoList';
 
 export enum Filter {
   ALL = 'All',
