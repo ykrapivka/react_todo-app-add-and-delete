@@ -79,6 +79,7 @@ export const TodoItem: React.FC<Props> = ({
 
     if (e.key === 'Escape') {
       setEditing(false);
+      setNewTitle(todo.title);
     }
   }
 
